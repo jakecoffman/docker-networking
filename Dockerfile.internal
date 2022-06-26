@@ -1,0 +1,8 @@
+FROM ubuntu:22.10
+
+RUN apt-get update && apt-get install -y ssh curl telnet
+
+# lowercase for curl
+ENV http_proxy=http://proxy:1080
+
+CMD ["/bin/bash"]

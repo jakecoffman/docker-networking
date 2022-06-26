@@ -1,0 +1,6 @@
+FROM golang:1.18-alpine
+
+COPY proxy proxy
+RUN cd proxy && go build proxy.go
+
+CMD ["./proxy/proxy"]

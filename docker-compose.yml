@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  internal-only:
+    build:
+      dockerfile: Dockerfile.internal
+      context: .
+    networks:
+      - no-internet
+    command: sleep 9999
+
+  proxy:
+    build:
+      dockerfile: Dockerfile.proxy
+      context: .
+    networks:
+      - no-internet
+      - internet
+
+networks:
+  no-internet:
+    driver: bridge
+    internal: true
+  internet:
+    driver: bridge
